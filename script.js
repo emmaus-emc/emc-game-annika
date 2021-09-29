@@ -35,7 +35,20 @@ var beweegAlles = function () {
   var KeyW = 87;
   var KeyS = 83;
 
-  var beweegSpeler
+  var beweegSpeler = function draw() {
+    if (keyIsDown(KeyA)) {
+      spelerX = spelerX - 5;
+    }
+    if (keyIsDown(KeyD)) {
+      spelerX = spelerX + 5;
+    }
+    if (keyIsDown(KeyW)) {
+      spelerY = spelerY - 5;
+    }
+    if (keyIsDown(KeyS)) {
+      spelerY = spelerY + 5;
+    }
+  }
 };
 
 /**
