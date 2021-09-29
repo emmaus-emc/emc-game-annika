@@ -30,7 +30,12 @@ var beweegAlles = function () {
   // kogel
 
   // speler
+  var KeyA = 65;
+  var KeyD = 68;
+  var KeyW = 87;
+  var KeyS = 83;
 
+  var beweegSpeler
 };
 
 /**
