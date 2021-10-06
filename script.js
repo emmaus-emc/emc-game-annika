@@ -17,6 +17,9 @@ var spelStatus = SPELEN;
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 
+var vijandX = 200;
+var vijandY = 25;
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -26,29 +29,46 @@ var spelerY = 600; // y-positie van speler
  */
 var beweegAlles = function () {
   // vijand
-
+  vijandY = vijandY + 8;
+  if (vijandY > 745) {
+    vijandY = -25;
+  }
   // kogel
 
   // speler
-  var KeyA = 65;
-  var KeyD = 68;
-  var KeyW = 87;
-  var KeyS = 83;
+  var ArrowLeft = 37;
+  var ArrowRight = 39;
+  var ArrowUp = 38;
+  var ArrowDown = 40;
 
-  var beweegSpeler = function draw() {
-    if (keyIsDown(KeyA)) {
-      spelerX = spelerX - 5;
-    }
-    if (keyIsDown(KeyD)) {
-      spelerX = spelerX + 5;
-    }
-    if (keyIsDown(KeyW)) {
-      spelerY = spelerY - 5;
-    }
-    if (keyIsDown(KeyS)) {
-      spelerY = spelerY + 5;
-    }
+
+  if (keyIsDown(ArrowLeft)) {
+    spelerX = spelerX - 10;
   }
+  if (keyIsDown(ArrowRight)) {
+    spelerX = spelerX + 10;
+  }
+  if (keyIsDown(ArrowUp)) {
+    spelerY = spelerY - 10;
+  }
+  if (keyIsDown(ArrowDown)) {
+    spelerY = spelerY + 10;
+  }
+
+  if (spelerX < 25) {
+    spelerX = 25;
+  }
+  if (spelerX > 1255) {
+    spelerX = 1255;
+  }
+  if (spelerY < 25) {
+    spelerY = 25;
+  }
+  if (spelerY > 695) {
+    spelerY = 695;
+  }
+
+
 };
 
 /**
@@ -68,9 +88,14 @@ var verwerkBotsing = function () {
  */
 var tekenAlles = function () {
   // achtergrond
+  fill("cyan");
+  rect(0, 0, 1280, 720);
 
   // vijand
-
+  fill("yellow");
+  rect(vijandX - 25, vijandY - 25, 50, 50);
+  fill(255, 95, 31);
+  ellipse(vijandX, vijandY, 15, 15);
   // kogel
 
   // speler
