@@ -20,6 +20,8 @@ var spelerY = 600; // y-positie van speler
 var vijandX = 200;
 var vijandY = 25;
 
+var health = 5;
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -81,6 +83,7 @@ var verwerkBotsing = function () {
   if (spelerX - vijandX < 50 && spelerY - vijandY < 50 && spelerX - vijandX > -50 && spelerY - vijandY > -50) {
     console.log("you died :(")
     spelerX = 1400;
+    health = health - 1;
   }
 
   // botsing kogel tegen vijand
@@ -109,7 +112,8 @@ var tekenAlles = function () {
   ellipse(spelerX, spelerY, 15, 15);
 
   // punten en health
-
+  textSize(40)
+  text(health, 20, 50)
 };
 
 /**
