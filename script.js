@@ -21,6 +21,9 @@ var vijandX = 200;
 var vijandY = 25;
 
 var health = 5;
+var punten = 0;
+var score = 0;
+var puntX = 1200;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -114,15 +117,18 @@ var tekenAlles = function () {
   // punten en health
   textSize(40)
   text(health, 20, 50)
+  score = floor(punten);
+  text(score, puntX, 50)
+  punten = punten + 1 / 50;
+  if (punten > 10) {
+    puntX = 1175;
+  }
+  if (punten > 100) {
+    puntX = 1150;
+  }
 };
 
-/**
- * return true als het gameover is
- * anders return false
- */
-var checkGameOver = function () {
-  return false;
-};
+
 
 /* ********************************************* */
 /* setup() en draw() functies / hoofdprogramma   */
@@ -151,12 +157,18 @@ function draw() {
     beweegAlles();
     verwerkBotsing();
     tekenAlles();
-    if (checkGameOver()) {
+    if (health <= 0) {
       spelStatus = GAMEOVER;
     }
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
-
+    console.log("gameover")
+    fill("red");
+    textSize(80);
+    text("GAMEOVER", 350, 200);
+    fill("black");
+    textSize(40);
+    text(score, 350, 250);
   }
 }

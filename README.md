@@ -33,9 +33,9 @@ Optioneel: extra onderdelen, je kunt die overslaan<br>
     De afmeting van het scherm vind je in de setup() functie
 - [x] 8. console-bericht bij botsing speler-vijand
     Gebruikt console.log om iets op de console te schrijven
-- [ ] 9. toon HP, elke botsing is lagere HP
-- [ ] 10. toon punten, elke seconde 1 punt erbij
-- [ ] 11. game over scherm met punten als HP op is
+- [x] 9. toon HP, elke botsing is lagere HP
+- [x] 10. toon punten, elke seconde 1 punt erbij
+- [x] 11. game over scherm met punten als HP op is
 - [ ] 12. optioneel: intro scherm met speluitleg, enter is start
 - [ ] 13. maak 3 vijanden op een rij
         - Kopieer de code die de vijanden beweegt en tekent
