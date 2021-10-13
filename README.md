@@ -37,7 +37,7 @@ Optioneel: extra onderdelen, je kunt die overslaan<br>
 - [x] 10. toon punten, elke seconde 1 punt erbij
 - [x] 11. game over scherm met punten als HP op is
 - [ ] 12. optioneel: intro scherm met speluitleg, enter is start
-- [ ] 13. maak 3 vijanden op een rij
+- [x] 13. maak 3 vijanden op een rij
         - Kopieer de code die de vijanden beweegt en tekent
         - Gebruik variabelen vijandX1, vijandX2 enzovoort
         - Zet de vijanden op dezelfde hoogte op de y-as

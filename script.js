@@ -20,6 +20,9 @@ var spelerY = 600; // y-positie van speler
 var vijandX = 200;
 var vijandY = 25;
 
+var vijandX2 = 350;
+var vijandX3 = 500;
+
 var health = 5;
 var punten = 0;
 var score = 0;
@@ -88,6 +91,16 @@ var verwerkBotsing = function () {
     spelerX = 1400;
     health = health - 1;
   }
+  if (spelerX - vijandX2 < 50 && spelerY - vijandY < 50 && spelerX - vijandX2 > -50 && spelerY - vijandY > -50) {
+    console.log("you died :(")
+    spelerX = 1400;
+    health = health - 1;
+  }
+  if (spelerX - vijandX3 < 50 && spelerY - vijandY < 50 && spelerX - vijandX3 > -50 && spelerY - vijandY > -50) {
+    console.log("you died :(")
+    spelerX = 1400;
+    health = health - 1;
+  }
 
   // botsing kogel tegen vijand
 
@@ -106,6 +119,16 @@ var tekenAlles = function () {
   rect(vijandX - 25, vijandY - 25, 50, 50);
   fill(255, 95, 31);
   ellipse(vijandX, vijandY, 15, 15);
+
+  fill("yellow");
+  rect(vijandX2 - 25, vijandY - 25, 50, 50);
+  fill(255, 95, 31);
+  ellipse(vijandX2, vijandY, 15, 15);
+
+  fill("yellow");
+  rect(vijandX3 - 25, vijandY - 25, 50, 50);
+  fill(255, 95, 31);
+  ellipse(vijandX3, vijandY, 15, 15);
   // kogel
 
   // speler
