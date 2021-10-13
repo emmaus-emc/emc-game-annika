@@ -31,7 +31,7 @@ Optioneel: extra onderdelen, je kunt die overslaan<br>
 - [x] 6. beweegVijand vallend
 - [x] 7. zet vijand bovenaan als gevallen
     De afmeting van het scherm vind je in de setup() functie
-- [ ] 8. console-bericht bij botsing speler-vijand
+- [x] 8. console-bericht bij botsing speler-vijand
     Gebruikt console.log om iets op de console te schrijven
 - [ ] 9. toon HP, elke botsing is lagere HP
 - [ ] 10. toon punten, elke seconde 1 punt erbij

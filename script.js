@@ -79,7 +79,8 @@ var beweegAlles = function () {
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
   if (spelerX - vijandX < 50 && spelerY - vijandY < 50 && spelerX - vijandX > -50 && spelerY - vijandY > -50) {
-    spelerX = 1200;
+    console.log("you died :(")
+    spelerX = 1400;
   }
 
   // botsing kogel tegen vijand
