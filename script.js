@@ -86,12 +86,23 @@ var beweegAlles = function () {
  */
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
-  if (spelerX - vijandX < 50 && spelerY - vijandY < 50 && spelerX - vijandX > -50 && spelerY - vijandY > -50) {
+  /**if (spelerX - vijandX < 50 && spelerY - vijandY < 50 && spelerX - vijandX > -50 && spelerY - vijandY > -50) {
     console.log("you died :(")
     spelerX = 1400;
     health = health - 1;
+  }**/
+  let i = 0;
+  for(i=0; i < 8; i++){
+    if (spelerX - (vijandX + i*100) < 50 && 
+        spelerY - vijandY < 50 && 
+        spelerX - (vijandX + i*100) > -50 && 
+        spelerY - vijandY > -50) {
+    console.log("you died :(" + "i =" + i);
+    spelerX = 1400;
+    health = health - 1;
+    }
   }
-  if (spelerX - vijandX2 < 50 && spelerY - vijandY < 50 && spelerX - vijandX2 > -50 && spelerY - vijandY > -50) {
+  /**if (spelerX - vijandX2 < 50 && spelerY - vijandY < 50 && spelerX - vijandX2 > -50 && spelerY - vijandY > -50) {
     console.log("you died :(")
     spelerX = 1400;
     health = health - 1;
@@ -100,7 +111,7 @@ var verwerkBotsing = function () {
     console.log("you died :(")
     spelerX = 1400;
     health = health - 1;
-  }
+  }**/
 
   // botsing kogel tegen vijand
 
@@ -115,7 +126,7 @@ var tekenAlles = function () {
   rect(0, 0, 1280, 720);
 
   // vijand
-  fill("yellow");
+  /**fill("yellow");
   rect(vijandX - 25, vijandY - 25, 50, 50);
   fill(255, 95, 31);
   ellipse(vijandX, vijandY, 15, 15);
@@ -128,7 +139,15 @@ var tekenAlles = function () {
   fill("yellow");
   rect(vijandX3 - 25, vijandY - 25, 50, 50);
   fill(255, 95, 31);
-  ellipse(vijandX3, vijandY, 15, 15);
+  ellipse(vijandX3, vijandY, 15, 15);**/
+
+  for(let i = 0; i < 8; i++) {
+    fill("yellow");
+    rect(vijandX - 25 + i * 100, vijandY - 25, 50, 50);
+    fill(255, 95, 31);
+    ellipse(vijandX + i * 100, vijandY, 15, 15);
+  }
+
   // kogel
 
   // speler
