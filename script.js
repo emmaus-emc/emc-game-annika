@@ -20,8 +20,7 @@ var spelerY = 600; // y-positie van speler
 var vijandX = 200;
 var vijandY = 25;
 
-var vijandX2 = 350;
-var vijandX3 = 500;
+const vijanden = [v1, v2, v3, v4, v5, v6, v7, v8];
 
 var health = 5;
 var punten = 0;
@@ -37,29 +36,27 @@ var puntX = 1200;
  */
 var beweegAlles = function () {
   // vijand
-  vijandY = vijandY + 8;
-  if (vijandY > 745) {
-    vijandY = -25;
+ // vijandY = vijandY + 8;
+ // if (vijandY > 745) {
+ //   vijandY = -25;
+ for (vijanden.length) {
+   
+ }
   }
   // kogel
 
   // speler
-  var ArrowLeft = 37;
-  var ArrowRight = 39;
-  var ArrowUp = 38;
-  var ArrowDown = 40;
 
-
-  if (keyIsDown(ArrowLeft)) {
+  if (keyIsDown(LEFT_ARROW)) {
     spelerX = spelerX - 10;
   }
-  if (keyIsDown(ArrowRight)) {
+  if (keyIsDown(RIGHT_ARROW)) {
     spelerX = spelerX + 10;
   }
-  if (keyIsDown(ArrowUp)) {
+  if (keyIsDown(UP_ARROW)) {
     spelerY = spelerY - 10;
   }
-  if (keyIsDown(ArrowDown)) {
+  if (keyIsDown(DOWN_ARROW)) {
     spelerY = spelerY + 10;
   }
 
@@ -86,32 +83,28 @@ var beweegAlles = function () {
  */
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
-  /**if (spelerX - vijandX < 50 && spelerY - vijandY < 50 && spelerX - vijandX > -50 && spelerY - vijandY > -50) {
-    console.log("you died :(")
-    spelerX = 1400;
-    health = health - 1;
-  }**/
-  let i = 0;
+ /* let i = 0;
   for(i=0; i < 8; i++){
     if (spelerX - (vijandX + i*100) < 50 && 
-        spelerY - vijandY < 50 && 
-        spelerX - (vijandX + i*100) > -50 && 
-        spelerY - vijandY > -50) {
-    console.log("you died :(" + "i =" + i);
-    spelerX = 1400;
-    health = health - 1;
+         spelerY - vijandY < 50 && 
+         spelerX - (vijandX + i*100) > -50 && 
+         spelerY - vijandY > -50) {
+     console.log("you died :(" + "i =" + i);
+     spelerX = 1400;
+     health = health - 1;
+      } */
+  for(i=0; i > vijanden.length; i++) {
+      if (spelerX - (vijandX + i*100) < 50 && 
+         spelerY - vijandY < 50 && 
+         spelerX - (vijandX + i*100) > -50 && 
+         spelerY - vijandY > -50) {
+     console.log("you died :(" + "i =" + i);
+     spelerX = 1400;
+     health = health - 1;
     }
-  }
-  /**if (spelerX - vijandX2 < 50 && spelerY - vijandY < 50 && spelerX - vijandX2 > -50 && spelerY - vijandY > -50) {
-    console.log("you died :(")
-    spelerX = 1400;
-    health = health - 1;
-  }
-  if (spelerX - vijandX3 < 50 && spelerY - vijandY < 50 && spelerX - vijandX3 > -50 && spelerY - vijandY > -50) {
-    console.log("you died :(")
-    spelerX = 1400;
-    health = health - 1;
-  }**/
+      
+    }
+  
 
   // botsing kogel tegen vijand
 
@@ -126,20 +119,6 @@ var tekenAlles = function () {
   rect(0, 0, 1280, 720);
 
   // vijand
-  /**fill("yellow");
-  rect(vijandX - 25, vijandY - 25, 50, 50);
-  fill(255, 95, 31);
-  ellipse(vijandX, vijandY, 15, 15);
-
-  fill("yellow");
-  rect(vijandX2 - 25, vijandY - 25, 50, 50);
-  fill(255, 95, 31);
-  ellipse(vijandX2, vijandY, 15, 15);
-
-  fill("yellow");
-  rect(vijandX3 - 25, vijandY - 25, 50, 50);
-  fill(255, 95, 31);
-  ellipse(vijandX3, vijandY, 15, 15);**/
 
   for(let i = 0; i < 8; i++) {
     fill("yellow");
