@@ -20,7 +20,9 @@ var spelerY = 600; // y-positie van speler
 var vijandX = 200;
 var vijandY = 25;
 
-const vijanden = [v1, v2, v3, v4, v5, v6, v7, v8];
+const x = [100, 200, 300, 400, 500, 600, 700, 800];
+const y = [25, 26, 27, 28, 29, 30, 31, 32];
+var j = 0;
 
 var health = 5;
 var punten = 0;
@@ -34,15 +36,21 @@ var puntX = 1200;
 /**
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
+
 var beweegAlles = function () {
   // vijand
+  
  // vijandY = vijandY + 8;
- // if (vijandY > 745) {
- //   vijandY = -25;
- for (vijanden.length) {
-   
+  //if (vijandY > 745) {
+  //  vijandY = -25; }
+ 
+ for (var i=0; i < y.length; i++){
+   y[i]=y[i]+8;
+   if (y[i]>720) {
+     y[i] = 25;
+   }
  }
-  }
+  
   // kogel
 
   // speler
@@ -92,19 +100,20 @@ var verwerkBotsing = function () {
      console.log("you died :(" + "i =" + i);
      spelerX = 1400;
      health = health - 1;
-      } */
-  for(i=0; i > vijanden.length; i++) {
-      if (spelerX - (vijandX + i*100) < 50 && 
-         spelerY - vijandY < 50 && 
-         spelerX - (vijandX + i*100) > -50 && 
-         spelerY - vijandY > -50) {
-     console.log("you died :(" + "i =" + i);
+      } 
+  } */
+  for(j=0; j > y.length; j++) {
+      if (spelerX - x[j] < 50 && 
+         spelerY - y[j] < 50 && 
+         spelerX - x[j] > -50 && 
+         spelerY - y[j] > -50) {
+     console.log("you died :(" + "j=" + j);
      spelerX = 1400;
      health = health - 1;
     }
       
-    }
-  
+    
+  }
 
   // botsing kogel tegen vijand
 
@@ -122,9 +131,9 @@ var tekenAlles = function () {
 
   for(let i = 0; i < 8; i++) {
     fill("yellow");
-    rect(vijandX - 25 + i * 100, vijandY - 25, 50, 50);
+    rect(x[j] - 25 + i * 100, y[j] - 25, 50, 50);
     fill(255, 95, 31);
-    ellipse(vijandX + i * 100, vijandY, 15, 15);
+    ellipse(x[j] + i * 100, y[j], 15, 15);
   }
 
   // kogel
