@@ -20,6 +20,9 @@ var spelerY = 600; // y-positie van speler
 var vijandX = 200;
 var vijandY = 25;
 
+var kogelX = 1;
+var kogelY = 1;
+
 const x = [100, 200, 300, 400, 500, 600, 700, 800];
 const y = [25, 26, 27, 28, 29, 30, 31, 32];
 var j = 0;
@@ -39,19 +42,27 @@ var puntX = 1200;
 
 var beweegAlles = function () {
   // vijand
-  
- // vijandY = vijandY + 8;
+
+  // vijandY = vijandY + 8;
   //if (vijandY > 745) {
   //  vijandY = -25; }
- 
- for (var i=0; i < y.length; i++){
-   y[i]=y[i]+8;
-   if (y[i]>720) {
-     y[i] = 25;
-   }
- }
-  
+
+  for (var i = 0; i < y.length; i++) {
+    y[i] = y[i] + 8;
+    if (y[i] > 720) {
+      y[i] = 25;
+    }
+  }
+
   // kogel
+
+ kogelY = kogelY - 12;
+ var Space = 32;
+
+ if(keyIsDown(Space)) {
+   kogelX = spelerX;
+   kogelY = spelerY - 40;
+ }
 
   // speler
 
@@ -91,32 +102,39 @@ var beweegAlles = function () {
  */
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
- /* let i = 0;
-  for(i=0; i < 8; i++){
-    if (spelerX - (vijandX + i*100) < 50 && 
-         spelerY - vijandY < 50 && 
-         spelerX - (vijandX + i*100) > -50 && 
-         spelerY - vijandY > -50) {
-     console.log("you died :(" + "i =" + i);
-     spelerX = 1400;
-     health = health - 1;
-      } 
-  } */
-  for(j=0; j > y.length; j++) {
-      if (spelerX - x[j] < 50 && 
-         spelerY - y[j] < 50 && 
-         spelerX - x[j] > -50 && 
-         spelerY - y[j] > -50) {
-     console.log("you died :(" + "j=" + j);
-     spelerX = 1400;
-     health = health - 1;
+  /* let i = 0;
+   for(i=0; i < 8; i++){
+     if (spelerX - (vijandX + i*100) < 50 && 
+          spelerY - vijandY < 50 && 
+          spelerX - (vijandX + i*100) > -50 && 
+          spelerY - vijandY > -50) {
+      console.log("you died :(" + "i =" + i);
+      spelerX = 1400;
+      health = health - 1;
+       } 
+   } */
+  
+  for (var j = 0; j < y.length; j++) {
+    if ((spelerX - x[j]) < 50 &&
+      (spelerY - y[j]) < 50 &&
+      (spelerX - x[j]) > -50 &&
+      (spelerY - y[j]) > -50) {
+      console.log("you died :(" + "j=" + j);
+      spelerX = 1400;
+      health = health - 1;
     }
-      
-    
   }
 
   // botsing kogel tegen vijand
-
+  for (var j = 0; j < y.length; j++) {
+    if ((kogelX - x[j]) < 30 &&
+      (kogelY - y[j]) < 30 &&
+      (kogelX - x[j]) > -30 &&
+      (kogelY - y[j]) > -30) {
+        console.log("direct hit");
+        y[j] = -99999999;
+      }
+  }
 };
 
 /**
@@ -129,14 +147,17 @@ var tekenAlles = function () {
 
   // vijand
 
-  for(let i = 0; i < 8; i++) {
+  for (let j = 0; j < x.length; j++) {
     fill("yellow");
-    rect(x[j] - 25 + i * 100, y[j] - 25, 50, 50);
+    rect(x[j] - 25 , y[j] - 25, 50, 50);
     fill(255, 95, 31);
-    ellipse(x[j] + i * 100, y[j], 15, 15);
+    ellipse(x[j] , y[j], 15, 15);
   }
 
   // kogel
+
+  fill("black");
+  ellipse(kogelX, kogelY, 17, 17);
 
   // speler
   fill("fuchsia");
