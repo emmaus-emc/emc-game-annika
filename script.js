@@ -20,11 +20,10 @@ var spelerY = 600; // y-positie van speler
 var vijandX = 200;
 var vijandY = 25;
 
-var kogelX = 1;
-var kogelY = 1;
-
 const x = [100, 200, 300, 400, 500, 600, 700, 800];
 const y = [25, 26, 27, 28, 29, 30, 31, 32];
+const kogelY = [];
+const kogelX = [];
 var j = 0;
 
 var health = 5;
@@ -56,13 +55,23 @@ var beweegAlles = function () {
 
   // kogel
 
- kogelY = kogelY - 12;
- var Space = 32;
+  //kogelY = kogelY - 12;
+  var Space = 32;
 
- if(keyIsDown(Space)) {
-   kogelX = spelerX;
-   kogelY = spelerY - 40;
- }
+  //if(keyIsDown(Space)) {
+  //  kogelX = spelerX;
+  //  kogelY = spelerY - 40;
+  //}
+
+  if (keyIsDown(Space)) {
+    kogelY.push(spelerY);
+    kogelX.push(spelerX);
+  }
+
+  for (var i = 0; i < kogelY.length; i++) {
+    kogelY[i] = kogelY[i] - 12;
+
+  }
 
   // speler
 
@@ -113,7 +122,7 @@ var verwerkBotsing = function () {
       health = health - 1;
        } 
    } */
-  
+
   for (var j = 0; j < y.length; j++) {
     if ((spelerX - x[j]) < 50 &&
       (spelerY - y[j]) < 50 &&
@@ -126,15 +135,22 @@ var verwerkBotsing = function () {
   }
 
   // botsing kogel tegen vijand
-  for (var j = 0; j < y.length; j++) {
-    if ((kogelX - x[j]) < 30 &&
-      (kogelY - y[j]) < 30 &&
-      (kogelX - x[j]) > -30 &&
-      (kogelY - y[j]) > -30) {
+  for (var i = 0; i < y.length; i++) { // vijanden
+    for (var j = 0; j < kogelX.length; j++) { // kogels
+      if ((kogelX[j] - x[i]) < 30 &&
+        (kogelY[j] - y[i]) < 30 &&
+        (kogelX[j] - x[i]) > -30 &&
+        (kogelY[j] - y[i]) > -30) {
         console.log("direct hit");
-        y[j] = -99999999;
+        y[i] = -99999999;
+        // kogel weghalen met splice ;
+        kogelX.splice(j, 1);
+        kogelY.splice(j, 1);
+        punten = punten + 50;
       }
+    }
   }
+
 };
 
 /**
@@ -149,15 +165,16 @@ var tekenAlles = function () {
 
   for (let j = 0; j < x.length; j++) {
     fill("yellow");
-    rect(x[j] - 25 , y[j] - 25, 50, 50);
+    rect(x[j] - 25, y[j] - 25, 50, 50);
     fill(255, 95, 31);
-    ellipse(x[j] , y[j], 15, 15);
+    ellipse(x[j], y[j], 15, 15);
   }
 
   // kogel
-
-  fill("black");
-  ellipse(kogelX, kogelY, 17, 17);
+  for (var j = 0; j < kogelX.length; j = j + 1) {
+    fill("black");
+    ellipse(kogelX[j], kogelY[j], 17, 17);
+  }
 
   // speler
   fill("fuchsia");

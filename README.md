@@ -51,8 +51,8 @@ Optioneel: extra onderdelen, je kunt die overslaan<br>
 - [x] 18. zet kogel bij speler als spatie wordt ingedrukt
 - [x] 19. beweegKogel omhoog
 - [x] 20. console-bericht bij botsing kogel-vijand
-- [ ] 21. verwijder kogel en vijand als geraakt
-- [ ] 22. optioneel: maak 10 kogels met loop en array
+- [x] 21. verwijder kogel en vijand als geraakt
+- [x] 22. optioneel: maak 10 kogels met loop en array
 - [ ] 23. optioneel: schiet maar 1 kogel telkens als spatie wordt ingedrukt
 
 ### Uitbreidingen
